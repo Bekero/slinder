@@ -1,0 +1,25 @@
+.main-card {
+    background-color: rgb(166, 206, 124);
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    .main-actions {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .actions {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    img {
+        width: 300px;
+    }
+}

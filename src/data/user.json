@@ -1,0 +1,9 @@
+[
+    {
+      "_id": "u102",
+      "username": "admin",
+      "password": "1234567",
+      "fullname": "admin Master",
+      "likedSongs": []
+    }
+  ]
