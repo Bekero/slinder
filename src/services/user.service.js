@@ -1,6 +1,4 @@
-import {
-    storageService
-} from '../services/async-storage.service'
+import { storageService } from '../services/async-storage.service'
 
 const STORAGE_KEY = 'user'
 const STORAGE_KEY_LOGGEDIN_USER = "loggedinUser";
@@ -46,15 +44,6 @@ async function signup(userCred) {
     const newUser = await storageService.post(STORAGE_KEY, userCred)
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(newUser))
     return newUser
-
-    // const users = await storageService.get('user')
-    // const isUser = users?.find((user) => user.username === userCred.username);
-    // if (isUser) {
-    //     return Promise.reject("username is already taken");
-    // }
-
-    // const user = await storageService.post('auth/signup', userCred)
-    // return saveLocalUser(user);
 }
 
 async function login(userCred) {

@@ -33,12 +33,34 @@ export function addUnLikedPerson(unLikedPerson) {
 export function addStarredPerson(starredPerson) {
     return (dispatch, getState) => {
         try {
-            const starredPeople = getState().userModule.user.starredPeople
-            const res = starredPeople?.find(person => person._id === starredPerson._id)
+            const {
+                starredPeople
+            } = getState().userModule.user
+            const res = structuredClone(starredPeople?.find(person => person._id === starredPerson._id))
+            console.log('res :', res)
             if (res) return
             const action = {
                 type: 'ADD_STARRED_PERSON',
                 starredPerson
+            }
+            dispatch(action)
+        } catch (err) {
+            console.log('Cannot Like Person :', err)
+        }
+    }
+}
+
+export function removeStarredPerson(starredPerson) {
+    return (dispatch, getState) => {
+        try {
+            const {
+                starredPeople
+            } = getState().userModule.user
+            const idx = starredPeople?.findIndex(person => person._id === starredPerson._id)
+            const newStarredPeople = structuredClone(starredPeople.filter(person => person._id !== starredPerson._id))
+            const action = {
+                type: 'REMOVE_STARRED_PERSON',
+                newStarredPeople
             }
             dispatch(action)
         } catch (err) {
@@ -107,7 +129,6 @@ export function onLogout() {
                 user: null
             })
         } catch (err) {
-            // showErrorMsg('Cannot logout')
             console.log('Cannot logout', err)
         }
     }

@@ -16,9 +16,9 @@ export const LoginSignup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-    // getUsers();
-  // }, []);
+  const onGoBack = () => {
+    navigate("/")
+  }
 
   const getUsers = () => {
     // const users = userService.getUsers();
@@ -71,6 +71,7 @@ export const LoginSignup = () => {
 
   return (
     <div className='login-page'>
+      <button onClick={() => onGoBack()}>Back</button>
       <div className='login-container'>
         <div className='login-signup'>
           <p>
@@ -102,35 +103,35 @@ export const LoginSignup = () => {
               <button>Login!</button>
             </form>
           )}
-            {isSignup && (
-              <form className='signup-form' onSubmit={signup}>
-                <input
-                  type='text'
-                  name='fullname'
-                  value={credentials.fullname}
-                  placeholder='Fullname'
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type='text'
-                  name='username'
-                  value={credentials.username}
-                  placeholder='Username'
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type='password'
-                  name='password'
-                  value={credentials.password}
-                  placeholder='Password'
-                  onChange={handleChange}
-                  required
-                />
-                <button>Sign Up!</button>
-              </form>
-            )}
+          {isSignup && (
+            <form className='signup-form' onSubmit={signup}>
+              <input
+                type='text'
+                name='fullname'
+                value={credentials.fullname}
+                placeholder='Fullname'
+                onChange={handleChange}
+                required
+              />
+              <input
+                type='text'
+                name='username'
+                value={credentials.username}
+                placeholder='Username'
+                onChange={handleChange}
+                required
+              />
+              <input
+                type='password'
+                name='password'
+                value={credentials.password}
+                placeholder='Password'
+                onChange={handleChange}
+                required
+              />
+              <button>Sign Up!</button>
+            </form>
+          )}
         </div>
       </div>
     </div>

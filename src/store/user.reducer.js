@@ -42,7 +42,6 @@ export function userReducer(state = initialState, action) {
             break;
 
         case 'ADD_STARRED_PERSON':
-            console.log('newState1 :', newState)
             newState = {
                 ...state,
                 user: {
@@ -50,7 +49,19 @@ export function userReducer(state = initialState, action) {
                     starredPeople: [...state.user.starredPeople, action.starredPerson]
                 }
             }
-            console.log('newState2 :', newState)
+            break;
+            
+        case 'REMOVE_STARRED_PERSON':
+            console.log('newState.user.starredPeople :', newState.user.starredPeople)
+            newState = {
+                ...state,
+                user: {
+                    ...state.user,
+                    starredPeople: action.newStarredPeople
+                },
+            }
+            console.log('newState.user.starredPeople :', newState.user.starredPeople)
+            break;
         default:
     }
     return newState;

@@ -1,23 +1,29 @@
 
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addLikedPerson, addUnLikedPerson, addStarredPerson } from '../store/user.actions'
+import { addLikedPerson, addUnLikedPerson, addStarredPerson, removeStarredPerson } from '../store/user.actions'
 import girlsDemo from '../data/usersDemo.json'
 import { userService } from '../services/user.service'
+import { PersonModal } from './person-modal'
+import { PersonCard } from './person-card'
 
 export function MainCard() {
 
     const dispatch = useDispatch()
 
     let [idxOfPerson, setIdxOfPerson] = useState(0)
+    let [modalOpen, setModalOpen] = useState(null)
     let [people, setPeople] = useState(null)
-    // let [user, setUser] = useState(null)
     const user = useSelector((state) => state.userModule.user)
 
     useEffect(() => {
         // setUser(userService.getLoggedInUser())
         setPeople(girlsDemo)
     }, [])
+
+    const onGoToProfile = (person) => {
+        setModalOpen(true)
+    }
 
     const onLikedPerson = (likedPerson) => {
         dispatch(addLikedPerson(likedPerson))
@@ -31,31 +37,46 @@ export function MainCard() {
 
     const onStarPerson = (starredPerson) => {
         dispatch(addStarredPerson(starredPerson))
-        // setIdxOfPerson(idxOfPerson + 1)
     }
 
+    const onCloseModal = (diff) => {
+        setModalOpen(diff)
+    }
+
+    const onUnStarPerson = (starredPerson) => {
+        dispatch(removeStarredPerson(starredPerson))
+    }
     if (!people || idxOfPerson === people.length) return <div>Banana</div>
     return (
-        <div className="main-card flex">
-            
-            <div className="main-actions">
-                <button>Profile</button>
-                <button>Home</button>
-                <button>Msgs</button>
-            </div>
-
-            <img src={people[idxOfPerson].img} alt="" />
-            <h6>{people[idxOfPerson].name}</h6>
-
-
-            <div className="actions">
-                <button>Back</button>
-                <button onClick={() => { onUnLikedPerson(people[idxOfPerson]) }}>UnLike</button>
-                <button>Lightning</button>
-                <button onClick={() => onLikedPerson(people[idxOfPerson])}>Like</button>
-                <button onClick={() => onStarPerson(people[idxOfPerson])}>Star</button>
-            </div>
-        </div >
+        <>
+            {
+                !modalOpen ?
+                    <div className="main-card flex">
+                        <PersonCard
+                            person={people[idxOfPerson]}
+                            onGoToProfile={onGoToProfile}
+                            onLikedPerson={onLikedPerson}
+                            onUnLikedPerson={onUnLikedPerson}
+                            onStarPerson={onStarPerson}
+                            onUnStarPerson={onUnStarPerson}
+                        />
+                    </div >
+                    :
+                    <PersonModal
+                        person={people[idxOfPerson]}
+                        onCloseModal={onCloseModal}
+                    />
+            }
+        </>
 
     )
 }
+            {/* {modalOpen && <PersonModal
+            person={people[idxOfPerson]}
+            onCloseModal={onCloseModal}
+        />} */}
+            {/* <div className="main-actions">
+            <button onClick={() => onGoToProfile(people[idxOfPerson])}>Profile</button>
+                <button>Home</button>
+                <button>Msgs</button>
+            </div> */}
