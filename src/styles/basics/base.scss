@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    background-color: #111418;
+    color: white
+}
+
+@import '../setup/typography';
+
+* {
+    box-sizing: border-box;
+}
+
+::selection {
+    // background-color: $third-txt-clr;
+    // color: $main-txt-clr;
+}
+
+html {
+    font-family: spotify-font, open-sans, sans-serif;
+    line-height: 1.6;
+    // color: $main-txt-clr;
+}
+
+// body {
+//     font-size: rem(18px);
+//     margin: 0;
+//     // max-width: 1024px;
+//     margin: auto;
+//     font-family: spotify-font, open-sans, sans-serif;
+// }
+
+.modal-opened123 {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 50;
+    background-color: rgb(0 0 0 / 12%);
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 0.6em;
+    line-height: 1;
+}
+
+svg {
+    fill: #fff;
+    opacity: 0.7;
+}
+
+img {
+    width: 100%;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+::-webkit-scrollbar {
+    width: 14px;
+    height: 22%;
+}
+
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255, 0.3);
+    border: 0px none #ffffff;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(255, 255, 255, 0.5);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: rgb(255, 255, 255, 0.65);
+}
+
+::-webkit-scrollbar-track {
+    background: #c3888800;
+    border: 0px dotted #ffffff;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: #654da800;
+}
+
+::-webkit-scrollbar-track:active {
+    background: #20644e00;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+.button-31 {
+    background-color: rgb(77, 71, 71);
+    border-radius: 4px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 0;
+    max-width: none;
+    min-height: 44px;
+    min-width: 10px;
+    outline: none;
+    overflow: hidden;
+    padding: 9px 20px 8px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+}
+
+.button-31:hover,
+.button-31:focus {
+    opacity: .75;
+}

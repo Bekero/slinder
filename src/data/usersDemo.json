@@ -11,7 +11,12 @@
         "loc": {
             "lat": 23.22,
             "lng": 21.24
-        }
+        },
+        "passions": [
+            "Music",
+            "Art",
+            "Gym"
+        ]
     },
     {
         "_id": "baba102",
@@ -24,7 +29,12 @@
         "loc": {
             "lat": 23.22,
             "lng": 21.24
-        }
+        },
+        "passions": [
+            "Foodie",
+            "Art",
+            "Tea"
+        ]
     },
     {
         "_id": "baba103",
@@ -37,7 +47,12 @@
         "loc": {
             "lat": 23.22,
             "lng": 21.24
-        }
+        },
+        "passions": [
+            "Netflix",
+            "Travel",
+            "Spotify"
+        ]
     },
     {
         "_id": "baba104",
@@ -50,6 +65,11 @@
         "loc": {
             "lat": 23.22,
             "lng": 21.24
-        }
+        },
+        "passions": [
+            "Reading",
+            "Hiking",
+            "Gym"
+        ]
     }
 ]

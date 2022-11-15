@@ -1,7 +1,7 @@
 .main-card {
-    background-color: rgb(166, 206, 124);
-    width: 400px;
-    height: 400px;
+    // background-color: slategray;
+    width: 375px;
+    height: 670px;
     margin: auto;
     flex-direction: column;
     align-items: center;
@@ -18,13 +18,106 @@
         justify-content: space-around;
     }
 
-    .actions {
-        display: flex;
-        width: 100%;
-        justify-content: space-around;
+    .person-card {
+
+        height: 100%;
+
+        .details-container {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            margin-top: auto;
+            background-position: 50% 50%;
+            background-size: 123.755%;
+
+            .about {
+                position: absolute;
+                padding: 12px;
+                bottom: 0;
+                width: 100%;
+                color: white;
+                background-image: linear-gradient(to top, rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0) 100%);
+
+                h1,
+                h4 {
+                    margin: 5px;
+                }
+
+                .passions-list {
+                    display: flex;
+                    padding: 0;
+                    li {
+                        background-color: rgba(255, 255, 255, 0.17);
+                        color: white;
+                        min-width: 55px;
+                        text-align: center;
+                        padding: 3px;
+                        border: 1px solid white;
+                        border-radius: 22px;
+                        backdrop-filter: blur(4px);
+                        margin-left: 5px;
+                        list-style: none;
+                    }
+                }
+            }
+
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                border-radius: 8px;
+            }
+        }
+
+        .actions {
+            width: 100%;
+            display: flex;
+            padding-bottom: 16px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            justify-content: space-around;
+            background-color: black;
+
+            >button {
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0);
+
+                &:hover {
+                    cursor: pointer;
+
+                    svg {
+                        transition-timing-function: ease;
+                        transform: scale(1.1);
+                    }
+                }
+            }
+
+            .un-like-person-btn {
+                border-color: rgb(231 33 141);
+
+                svg {
+                    fill: rgb(231 33 141);
+                }
+            }
+
+            .like-person-btn {
+                border-color: #5cf4cd;
+
+                svg {
+                    fill: #5cf4cd;
+                }
+            }
+
+            .star-person {
+                border-color: #40bbfa;
+
+                svg {
+                    fill: #40bbfa;
+                }
+            }
+        }
     }
 
-    img {
-        width: 300px;
-    }
 }

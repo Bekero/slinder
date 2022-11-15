@@ -1,6 +1,5 @@
 
 
-
 export function PersonModal({ person, onCloseModal }) {
 
     const closeModal = (diff) => {
