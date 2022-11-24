@@ -20,7 +20,6 @@ export function userReducer(state = initialState, action) {
                 user: action.user
             }
             break;
-
         case 'ADD_LIKED_PERSON':
             newState = {
                 ...state,
@@ -30,7 +29,6 @@ export function userReducer(state = initialState, action) {
                 },
             }
             break;
-
         case 'ADD_UN_LIKED_PERSON':
             newState = {
                 ...state,
@@ -40,7 +38,6 @@ export function userReducer(state = initialState, action) {
                 },
             }
             break;
-
         case 'ADD_STARRED_PERSON':
             newState = {
                 ...state,
@@ -50,7 +47,6 @@ export function userReducer(state = initialState, action) {
                 }
             }
             break;
-            
         case 'REMOVE_STARRED_PERSON':
             console.log('newState.user.starredPeople :', newState.user.starredPeople)
             newState = {
