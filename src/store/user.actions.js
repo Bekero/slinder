@@ -36,8 +36,7 @@ export function addStarredPerson(starredPerson) {
             const {
                 starredPeople
             } = getState().userModule.user
-            const res = structuredClone(starredPeople?.find(person => person._id === starredPerson._id))
-            console.log('res :', res)
+            const res = starredPeople?.find(person => person._id === starredPerson._id)
             if (res) return
             const action = {
                 type: 'ADD_STARRED_PERSON',
@@ -56,6 +55,7 @@ export function removeStarredPerson(starredPerson) {
             const {
                 starredPeople
             } = getState().userModule.user
+            console.log('starredPeople :', starredPeople)
             const idx = starredPeople?.findIndex(person => person._id === starredPerson._id)
             const newStarredPeople = structuredClone(starredPeople.filter(person => person._id !== starredPerson._id))
             const action = {

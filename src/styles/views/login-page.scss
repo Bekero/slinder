@@ -6,22 +6,24 @@
     right: 0;
     bottom: 0;
     z-index: 1;
-    background: url(../../assets/img/login-blur.jpeg);
+    background: url(../../assets/img/asd.avif);
 
     .login-container {
         .login-signup {
+            display: flex;
+            flex-direction: column;
             position: absolute;
+            overflow: scroll;
             top: 50%;
             left: 50%;
-            -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-            width: 450px;
-            height: 470px;
-            background: #111;
+            width: 570px;
+            height: 610px;
+            background: rgba(17, 17, 17, 0.9803921569);
             border-radius: 0.625rem;
             text-align: center;
             padding: 40px;
-            box-shadow: 0 0 7pxhsla(0, 0%, 67.8%, .23921568627450981);
+            box-shadow: 5px 5px 15px 5px #000000;
 
             .login-form {
                 display: grid;
@@ -52,28 +54,90 @@
                 border: none;
             }
 
-                .btn-link{
-                    color: #fff;
-                    font-size: 1.125rem;
-                    text-decoration: underline;
-                    background-color: transparent;
-                    border: none;
-                    margin-bottom: 3px;
-                }
-              
-                
+            .btn-link {
+                color: #fff;
+                font-size: 1.125rem;
+                text-decoration: underline;
+                background-color: transparent;
+                border: none;
+                margin-bottom: 3px;
             }
 
+
+        }
+
         .signup-form {
-            display: grid;
+            display: flex;
             place-items: center;
             grid-gap: 20px;
+            justify-content: center;
+            flex-direction: column;
+
+
+            select {
+                margin-top: 35px;
+            }
+
+            .img-container {
+                height: 200px;
+                width: 180px;
+                position: relative;
+                box-shadow: 0 4px 60px rgba(0, 0, 0, .5);
+
+                input {
+                    visibility: hidden;
+                }
+
+                .curr-img {
+
+                    label {
+                        background-color: rgba(245, 222, 179, 0.224);
+                    }
+                    p {
+                        color: rgb(42, 86, 189);
+                        margin-top: 10px;
+                    }
+
+                    .choose-another-img {
+                        // background-color: rgb(133, 82, 82);
+                        label {
+                            cursor: pointer;
+                            position: absolute;
+                            z-index: 30;
+                            top: 115%;
+                            left: 50%;
+                            width: 100%;
+                            transform: translate(-50%, -50%);
+                        }
+                    }
+
+
+                    .remove-img {
+                        position: absolute;
+                        right: 0;
+                        margin-right: 4px;
+                    }
+                }
+                .no-img {
+                    
+                    label {
+                        position: absolute;
+                        z-index: 30;
+                        top: 50%;
+                        left: 50%;
+                        width: 100%;
+                        transform: translate(-50%, -50%);
+                        height: 100%;
+                    }
+                }
+            }
         }
 
     }
 
 }
-.username{
+
+.username {
     display: flex;
     align-items: center;
 }

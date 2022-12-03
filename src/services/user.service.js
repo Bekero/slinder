@@ -37,11 +37,19 @@ function getLoggedInUser() {
 
 async function signup(userCred) {
     const users = await storageService.query(STORAGE_KEY)
-    const user = users.find(user =>
-        user.username === userCred.username)
+    const user = users.find(user => user.username === userCred.username)
     if (user) return console.log('Username Already Exists')
 
+        // userCred.gender
+        // userCred.age,
+        // userCred.img,
+        // userCred.description,
+        // userCred.isLiked,
+        // userCred.isStarred,
+        // userCred.loc,
+        // userCred.passions
     const newUser = await storageService.post(STORAGE_KEY, userCred)
+    console.log('newUser :', newUser)
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(newUser))
     return newUser
 }

@@ -12,11 +12,14 @@ export function MainCard() {
 
     const dispatch = useDispatch()
 
+    let [people, setPeople] = useState([])
     let [idxOfPerson, setIdxOfPerson] = useState(0)
     let [modalOpen, setModalOpen] = useState(null)
     let [currPerson, setCurrPerson] = useState(null)
-    let [people, setPeople] = useState([])
     const user = useSelector((state) => state.userModule.user)
+
+    const componentDidMount = () => {
+    }
 
     useEffect(() => {
         // setUser(userService.getLoggedInUser())
@@ -24,35 +27,36 @@ export function MainCard() {
     }, [])
 
     useEffect(() => {
-        if (!currPerson) {
-            setCurrPerson(people[0])
-            console.log('currPerson :', currPerson)
-        }
+        if (!people.length) return
+        setCurrPerson(people[0])
     }, [people])
 
-    const onGoToProfile = (person) => {
+    useEffect(() => {
+        console.log('modalOpen :', modalOpen)
+    }, [modalOpen])
+
+    const onGoToProfile = () => {
         setModalOpen(true)
     }
 
     const onLikedPerson = (swiped) => {
-        console.log('currPerson :', currPerson)
+        console.log('Liked')
         if (checkIfExist(currPerson._id, true)) return
         if (!swiped) {
-            const idx = people.findIndex(person => person._id === currPerson._id)
-            let newPeople = people.splice(idx, 1)
+            let newPeople = people.filter(person => person._id !== currPerson._id)
             setPeople(newPeople)
         }
-        // changeCurrPersonIdx(currPerson._id)
+        changeCurrPersonIdx(currPerson._id)
         dispatch(addLikedPerson(currPerson))
     }
 
     const onUnLikedPerson = (swiped) => {
         if (checkIfExist(currPerson._id, false)) return
         if (!swiped) {
-            const idx = people.findIndex(person => person._id === currPerson._id)
-            setPeople(people.splice(idx, 1))
+            let newPeople = people.filter(person => person._id !== currPerson._id)
+            setPeople(newPeople)
         }
-        // changeCurrPersonIdx(currPerson._id)
+        changeCurrPersonIdx(currPerson._id)
         dispatch(addUnLikedPerson(currPerson))
     }
 
@@ -67,6 +71,11 @@ export function MainCard() {
         dispatch(addStarredPerson(currPerson))
     }
 
+    const onUnStarPerson = () => {
+        console.log('Cannot unStar anyone except this Shula Zaken')
+        dispatch(removeStarredPerson(currPerson))
+    }
+
     const onCloseModal = (diff) => {
         setModalOpen(diff)
     }
@@ -76,19 +85,10 @@ export function MainCard() {
         // else if (direction === 'left') onUnLikedPerson(true)
     }
 
-    const onUnStarPerson = () => {
-        dispatch(removeStarredPerson(currPerson))
-    }
-
     const changeCurrPersonIdx = (id) => {
-        console.log('id :', id)
-        const idx = people.findIndex(person => {
-            console.log('person :', person)
-            return person._id === id
-        })
-        console.log('people[idx + 1] :', people[idx + 1])
-        console.log('idx :', idx)
+        const idx = people.findIndex(person => person._id === id)
         setCurrPerson(people[idx + 1])
+        setModalOpen(false)
     }
 
     const swipe = (dir, name, index) => {
@@ -102,7 +102,8 @@ export function MainCard() {
         else if (dir === 'left') onUnLikedPerson(true)
     }
 
-    if (!people || people.length === 0) return <div>Banana</div>
+    if (!currPerson) return <div>no Current Person</div>
+    if (!people || people.length === 0) return <div>No People</div>
     return (
         <>
             {
@@ -110,7 +111,6 @@ export function MainCard() {
                     <div className="card-container">
                         {people.map((person, index) => {
                             return <TinderCard
-                                // onSwipe={onSwipe}
                                 onSwipe={(dir) => swipe(dir, person, index)}
                                 onCardLeftScreen={(dir) => outOfFrame(dir, person.name, index)}
                                 preventSwipe={['up', 'down']}
@@ -120,7 +120,7 @@ export function MainCard() {
                                 <PersonCard
                                     key={person._id}
                                     person={person}
-                                    // setCurrPerson={setCurrPerson}
+                                    currPerson={currPerson}
                                     onGoToProfile={onGoToProfile}
                                     onLikedPerson={onLikedPerson}
                                     onUnLikedPerson={onUnLikedPerson}
@@ -128,15 +128,24 @@ export function MainCard() {
                                     onUnStarPerson={onUnStarPerson}
                                 />
                             </TinderCard>
-
                         })}
                     </div>
-
                     :
-                    <PersonModal
-                        person={people[idxOfPerson]}
-                        onCloseModal={onCloseModal}
-                    />
+                        <div className="modal-container">
+                            <div className="swipe">
+                            <PersonModal
+                                key={currPerson._id}
+                                person={currPerson}
+                                onCloseModal={onCloseModal}
+                                currPerson={currPerson}
+                                onGoToProfile={onGoToProfile}
+                                onLikedPerson={onLikedPerson}
+                                onUnLikedPerson={onUnLikedPerson}
+                                onStarPerson={onStarPerson}
+                                onUnStarPerson={onUnStarPerson}
+                            />
+                        </div>
+                    </div>
             }
         </>
 
