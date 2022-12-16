@@ -6,11 +6,13 @@ import { useSelector } from 'react-redux';
 export function SideNav() {
 
     const { user } = useSelector(state => state.userModule)
-    console.log('user :', user)
+
     if (!user) return
     return (
         <div className="side-nav">
-            <AuthUser />
+            <div className="top-side-nav">
+                <AuthUser />
+            </div>
             <h2>Star List :</h2>
             <ul>
                 {user?.starredPeople?.map(person => {

@@ -4,9 +4,8 @@ import { useSelector } from 'react-redux'
 import HeartSvg from './svg/heart-svg'
 import XSvg from './svg/x-svg'
 import StarSvg from './svg/star-svg'
-import CircleSvg from './svg/circle-svg'
-import { Draggable } from "react-beautiful-dnd"
 import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 export function PersonCard({ currPerson, onGoToProfile, modalOpen, onUnLikedPerson, onLikedPerson, onStarPerson, onUnStarPerson }) {
 

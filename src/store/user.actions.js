@@ -69,6 +69,47 @@ export function removeStarredPerson(starredPerson) {
     }
 }
 
+export function addPassion(wantedPassion) {
+    return (dispatch, getState) => {
+        try {
+            const { passions } = getState().userModule.user
+            // if(passions.length === 5)
+            //! The passion removal dosnt work!
+            const res = passions?.find(passion => passion === wantedPassion)
+            if (res) {
+                removePassion(wantedPassion)
+                return
+            }
+
+            const action = {
+                type: 'ADD_PASSION',
+                wantedPassion
+            }
+            dispatch(action)
+        } catch (err) {
+            console.log('Cannot Add Passion :', err)
+        }
+    }
+}
+
+export function removePassion(wantedPassion) {
+    return (dispatch, getState) => {
+        try {
+            const { passions } = getState().userModule.user
+            const idx = passions?.findIndex(passion => passion === wantedPassion)
+            const newPassions = structuredClone(passions.filter(passion => passion !== wantedPassion))
+            console.log('newPassions :', newPassions)
+            const action = {
+                type: 'REMOVE_PASSION',
+                newPassions
+            }
+            dispatch(action)
+        } catch (err) {
+            console.log('Cannot Remove Passion :', err)
+        }
+    }
+}
+
 export function loadUsers() {
     return async dispatch => {
         try {

@@ -1,0 +1,47 @@
+.my-card-container {
+
+    .swipe {
+
+        .details-container {
+
+            .about {
+                cursor: default;
+            }
+
+            .passion-list {
+                display: flex;
+                padding: 0px;
+                padding-top: 16px;
+                padding-bottom: 16px;
+                padding-right: 12px;
+                padding-left: 12px;
+                flex-direction: row;
+                flex-wrap: wrap;
+
+                li {
+                    padding-bottom: 4px;
+                    padding-top: 4px;
+                    padding-right: 8px;
+                    padding-left: 8px;
+                    margin: 4px;
+                    cursor: pointer;
+                    color: #939ba7;
+                    font-size: 12px;
+                    min-width: 55px;
+                    text-align: center;
+                    border: 1px solid white;
+                    border-radius: 22px;
+                    backdrop-filter: blur(4px);
+                    margin-left: 5px;
+                    list-style: none;
+                }
+
+                .passion-highlight {
+                    border-color: red;
+                    color: red;
+                }
+            }
+        }
+
+    }
+}

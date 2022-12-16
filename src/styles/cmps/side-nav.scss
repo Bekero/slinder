@@ -1,5 +1,39 @@
 .side-nav {
     background-color: #000;
     height: 100%;
-    padding: 24px;
+
+    .top-side-nav {
+        padding: 12px;
+        background-color: rgb(140, 64, 60);
+
+        .top-side-nav-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            background-color: rgba(245, 222, 179, 0.218);
+            align-items: center;
+
+            .user-profile {
+                padding: 4px;
+                display: flex;
+                align-items: center;
+                border-radius: 36px;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: rgba(0, 0, 0, 0.336);
+                }
+
+                .img-container {
+                    width: 32px;
+                    height: 32px;
+                    margin-right: 10px;
+                    border-radius: 33%;
+                    background-position: 50% 50%;
+                    background-size: auto 125.581%;
+                }
+            }
+        }
+    }
+
 }

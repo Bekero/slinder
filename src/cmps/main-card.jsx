@@ -13,6 +13,7 @@ export function MainCard() {
     const dispatch = useDispatch()
 
     let [people, setPeople] = useState([])
+    let [myProfile, setMyProfile] = useState(null)
     let [idxOfPerson, setIdxOfPerson] = useState(0)
     let [modalOpen, setModalOpen] = useState(null)
     let [currPerson, setCurrPerson] = useState(null)
@@ -131,8 +132,8 @@ export function MainCard() {
                         })}
                     </div>
                     :
-                        <div className="modal-container">
-                            <div className="swipe">
+                    <div className="modal-container">
+                        <div className="swipe">
                             <PersonModal
                                 key={currPerson._id}
                                 person={currPerson}

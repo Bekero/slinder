@@ -1,0 +1,56 @@
+.card-container-my-profile {
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+
+    .swipe {
+        position: absolute;
+
+        .details-container {
+            position: relative;
+            width: 400px;
+            min-height: 80vh;
+            // height: 50vh;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0px 18px 53px 0px rgba(0, 0, 0, 0.3);
+
+            .about {
+                position: absolute;
+                // cursor: pointer;
+                padding: 0;
+                bottom: 0;
+                width: 100%;
+                color: white;
+                background-image: linear-gradient(to top, rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0) 100%);
+
+                h1,
+                p {
+                    margin: 0;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.256);
+                    padding: 12px 16px;
+                }
+
+                .button-container {
+                    display: flex;
+                    justify-content: center;
+                    margin: 5px;
+
+                    button {
+                        cursor: pointer;
+                        color: #fff;
+                        width: 60%;
+                        height: 2.8125rem;
+                        border-radius: 1.25rem;
+                        background-color: #1aa049;
+                        font-size: 1.2rem;
+                        text-transform: uppercase;
+                        border: none;
+                    }
+                }
+            }
+        }
+    }
+}

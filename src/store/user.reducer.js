@@ -29,6 +29,16 @@ export function userReducer(state = initialState, action) {
                 },
             }
             break;
+        case 'ADD_PASSION':
+            newState = {
+                ...state,
+                user: {
+                    ...state.user,
+                    passions: [...state.user.passions, action.wantedPassion]
+                },
+            }
+            console.log('state :', state)
+            break;
         case 'ADD_UN_LIKED_PERSON':
             newState = {
                 ...state,
@@ -48,7 +58,6 @@ export function userReducer(state = initialState, action) {
             }
             break;
         case 'REMOVE_STARRED_PERSON':
-            console.log('newState.user.starredPeople :', newState.user.starredPeople)
             newState = {
                 ...state,
                 user: {
@@ -56,7 +65,16 @@ export function userReducer(state = initialState, action) {
                     starredPeople: action.newStarredPeople
                 },
             }
-            console.log('newState.user.starredPeople :', newState.user.starredPeople)
+            break;
+        case 'REMOVE_PASSION':
+            newState = {
+                ...state,
+                user: {
+                    ...state.user,
+                    passions: action.newPassions
+                },
+            }
+            console.log('state :', state)
             break;
         default:
     }

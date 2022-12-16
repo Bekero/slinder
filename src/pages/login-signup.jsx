@@ -20,6 +20,7 @@ export const LoginSignup = () => {
     likedPeople: [],
     starredPeople: [],
     unLikedPeople: [],
+    passions: [],
     img: ""
 
   });
