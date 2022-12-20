@@ -35,6 +35,7 @@ export function MyCard({ user }) {
                 className="details-container"
                 style={{ backgroundImage: `url(${personalCard?.img})` }}
             >
+                <div className="profile-image"></div>
                 <div className="about">
                     <h1>{personalCard?.username}, {personalCard?.age}</h1>
                     <p>{personalCard.description}</p>

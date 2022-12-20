@@ -1,5 +1,5 @@
 
-export function AllCountries({ credentials, handleChange}) {
+export function AllCountries({ handleChange}) {
 
     return (
         <>

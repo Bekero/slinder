@@ -2,16 +2,14 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
 import { addPassion, removePassion } from '../store/user.actions'
 
 export function PassionList() {
 
-    const [credentials, setCredentials] = useState([]);
     const { user } = useSelector((state) => state.userModule)
     const dispatch = useDispatch()
-    useEffect(() => {
-        console.log('user :', user)
-    }, [])
+    const navigate = useNavigate();
 
     let passionList = [
         'Healthy eating',
@@ -74,39 +72,45 @@ export function PassionList() {
 
     const onAddPassion = (ev) => {
         const value = ev.target.innerText
-        const isExist = credentials.find(passion => passion === value)
+        const isExist = user?.passions?.find(passion => passion === value)
         if (isExist) {
-            const newPassions = credentials.filter(passion => passion !== value)
-            // setCredentials(newPassions)
             dispatch(removePassion(value))
             return
         }
-        if (credentials.length === 5) return
+        if (user?.passions?.length === 5) return
         dispatch(addPassion(value))
-        // setCredentials(credentials => [...credentials, value])
     }
 
     const isPassionExist = (currPassion) => {
-        let isExist = credentials.find(passion => passion === currPassion)
-        console.log('isExist :', isExist)
+        const isExist = user?.passions?.find(passion => passion === currPassion)
         return isExist
+    }
+
+    const onGoToProfileEdit = () => {
+        navigate('/profile/edit')
     }
 
     return (
         <div className="my-card-container">
             <div className="swipe">
                 <div className="details-container">
-                    <div>
-                        <p>Edit Passions</p>
+                    <div className="title">
+                        <p className="edit-title">Edit Passions</p>
+                        <p onClick={() => onGoToProfileEdit()} className="done">Done</p>
                     </div>
-                    <p>Select passions that you’d like to share with the people you connect with. Choose a minimum of 3.</p>
-                    <h3>PASSIONS  {credentials.length}/5</h3>
+                    <div className="instructions">
+                        <p>Select passions that you’d like to share with the people you connect with. Choose a minimum of 3.</p>
+                        <div>
+                            <p>PASSIONS</p>
+                            <p>{user?.passions?.length}/5</p>
+                        </div>
+                    </div>
                     <ul className="passion-list">
                         {passionList.map(passion => {
                             return <li
                                 key={passion}
                                 onClick={(ev) =>
-                                    onAddPassion(ev)}
+                                onAddPassion(ev)}
                                 value={passion}
                                 className={isPassionExist(passion) ? 'passion-highlight' : ''}
                             >{passion}</li>

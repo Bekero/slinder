@@ -1,0 +1,16 @@
+.life-style-container {
+    background-color: black;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    >* {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid white;
+        height: 50px;
+        padding: 4px;
+        margin: 0;
+        align-items: center;
+    }
+}

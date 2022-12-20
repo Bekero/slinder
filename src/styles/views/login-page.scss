@@ -6,7 +6,11 @@
     right: 0;
     bottom: 0;
     z-index: 1;
-    background: url(../../assets/img/asd.avif);
+    // background: url(../../assets/img/asd1.webp);
+    // background: url(../../assets/img/asd.avif);
+    background: url(../../assets/img/asd2.avif);
+    background-position: center;
+    background-size: cover;
 
     .login-container {
         .login-signup {
@@ -48,7 +52,7 @@
                 width: 80%;
                 height: 2.8125rem;
                 border-radius: 1.25rem;
-                background-color: #1aa049;
+                background-color: #d12839;
                 font-size: 1.2rem;
                 text-transform: uppercase;
                 border: none;

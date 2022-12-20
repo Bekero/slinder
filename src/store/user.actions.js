@@ -72,15 +72,19 @@ export function removeStarredPerson(starredPerson) {
 export function addPassion(wantedPassion) {
     return (dispatch, getState) => {
         try {
-            const { passions } = getState().userModule.user
-            // if(passions.length === 5)
-            //! The passion removal dosnt work!
-            const res = passions?.find(passion => passion === wantedPassion)
-            if (res) {
-                removePassion(wantedPassion)
+            const {
+                passions
+            } = getState().userModule.user
+            const isPassionExist = passions?.find(passion => passion === wantedPassion)
+            if (isPassionExist) {
+                const newPassions = structuredClone(passions.filter(passion => passion !== wantedPassion))
+                const action = {
+                    type: 'REMOVE_PASSION',
+                    newPassions
+                }
+                dispatch(action)
                 return
             }
-
             const action = {
                 type: 'ADD_PASSION',
                 wantedPassion
@@ -95,8 +99,9 @@ export function addPassion(wantedPassion) {
 export function removePassion(wantedPassion) {
     return (dispatch, getState) => {
         try {
-            const { passions } = getState().userModule.user
-            const idx = passions?.findIndex(passion => passion === wantedPassion)
+            const {
+                passions
+            } = getState().userModule.user
             const newPassions = structuredClone(passions.filter(passion => passion !== wantedPassion))
             console.log('newPassions :', newPassions)
             const action = {
